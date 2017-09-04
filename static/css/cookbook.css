@@ -255,3 +255,17 @@ p {
 	margin-top: 1rem;
 	margin-bottom: 1rem;
 }
+
+.screenshot {
+	height: 20rem;
+	margin: 0 auto 2rem;
+	border: 1px solid #8C8A8E;
+}
+
+.welHead {
+	margin: 0 auto 2rem;
+}
+
+#noBorder {
+	border: 0;
+}

@@ -1,11 +1,11 @@
 {% if 'username' in session %}
   
   <nav class="navbar fixed-top navbar-expand-lg navbar-light navmain">
-    <a class="navbar-brand" href="#"><img alt="cookLogo" src="{{ url_for('static', filename = 'img/artboard.png') }}"/></a>
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo01" aria-controls="navbarTogglerDemo01" aria-expanded="false" aria-label="Toggle navigation">
+    <a class="navbar-brand" href="{{url_for('welcome')}}"><img alt="cookLogo" src="{{ url_for('static', filename = 'img/artboard.png') }}"/></a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarHide" aria-controls="navbarHide" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
-    <div class="collapse navbar-collapse" id="navbarTogglerDemo01">
+    <div class="collapse navbar-collapse" id="navbarHide">
       <ul class="navbar-nav ml-auto mr-2 mt-2 mt-lg-0">
         <li class="nav-item">
           <a class="nav-link" href="{{url_for('home')}}">Home</a>
@@ -20,11 +20,11 @@
 {% else %}
 
    <nav class="navbar fixed-top navbar-expand-lg navbar-light navmain">
-    <a class="navbar-brand" href="#"><img alt="cookLogo" src="{{ url_for('static', filename = 'img/artboard.png') }}"/></a>
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo01" aria-controls="navbarTogglerDemo01" aria-expanded="false" aria-label="Toggle navigation">
+    <a class="navbar-brand" href="{{url_for('welcome')}}"><img alt="cookLogo" src="{{ url_for('static', filename = 'img/artboard.png') }}"/></a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarHide" aria-controls="navbarHide" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
-    <div class="collapse navbar-collapse" id="navbarTogglerDemo01">
+    <div class="collapse navbar-collapse" id="navbarHide">
       <ul class="navbar-nav ml-auto mr-2 mt-2 mt-lg-0">
         <li class="nav-item">
           <a class="nav-link" href="{{url_for('welcome')}}">Home</a>
