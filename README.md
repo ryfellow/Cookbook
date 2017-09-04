@@ -3,7 +3,6 @@
 This is my submission for the fourth project in the Udacity Full Stack Nanodegree. It is a simple Flask application that uses a sqlite3 database to store recipes entered by users.
   
   ![Home Screen](static/img/screen.png)
-  ![Post Screen](static/img/screen2.png)
   ![Form Screen](static/img/screen3.png)
   
 # Instructions to Run
