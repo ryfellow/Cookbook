@@ -1,0 +1,109 @@
+{% extends "base.html" %}
+{% block loginContent %}
+{% include "header.html" %}
+<body style="background-image:url({{ url_for('static', filename='img/cbTile.png') }})">
+  <div id="fb-root"></div>
+    <script>
+      (function(d, s, id) {
+        var js, fjs = d.getElementsByTagName(s)[0];
+        if (d.getElementById(id)) return;
+        js = d.createElement(s); js.id = id;
+        js.src = "//connect.facebook.net/en_US/sdk.js#xfbml=1&version=v2.10&appId=488369924846431";
+        fjs.parentNode.insertBefore(js, fjs);
+      }(document, 'script', 'facebook-jssdk'));
+    </script>
+
+    {% with messages = get_flashed_messages(with_categories=true) %}
+    <div class="container alertMessage">
+      <div class="row">
+        {% if messages %}
+          {% for category, message in messages %}
+            {% if category == 'danger' %}
+            <div class="alert alert-{{ category }}" role="alert">
+              <strong>Error! </strong> {{ message }}
+            </div>
+            {% elif category == 'success' %}
+            <div class="alert alert-{{ category }}" role="alert">
+              <strong>Success! </strong> {{ message }}
+            </div>
+            {% else %}
+            <div class="alert alert-{{ category }}" role="alert">
+              {{ message }}
+            </div>
+            {% endif %}
+          {% endfor %}
+        {% endif %}
+        </div>
+    </div>
+    {% endwith %}
+
+    <script>
+      window.fbAsyncInit = function() {
+      FB.init({
+        appId      : '488369924846431',
+        cookie     : true,  // enable cookies to allow the server to access 
+                            // the session
+        xfbml      : true,  // parse social plugins on this page
+        version    : 'v2.10' // use version 2.10
+      });
+      };
+
+      // Here we run a very simple test of the Graph API after login is
+      // successful.  See statusChangeCallback() for when this call is made.
+      function sendTokenToServer() {
+        var access_token = FB.getAuthResponse()['accessToken'];
+        console.log(access_token)
+        console.log('Welcome!  Fetching your information.... ');
+        FB.api('/me', function(response) {
+          console.log('Successful login for: ' + response.name);
+         $.ajax({
+          type: 'POST',
+          url: '/fbconnect?state={{STATE}}',
+          processData: false,
+          data: access_token,
+          contentType: 'application/octet-stream; charset=utf-8',
+          success: function(result) {
+            // Handle or verify the server response if necessary.
+            if (result) {
+              $('#result').html('Login Successful!</br>'+ result + '</br>Redirecting...')
+             setTimeout(function() {
+              window.location.href = "{{url_for('home')}}";
+             }, 4000);
+              
+          } else {
+            $('#result').html('Failed to make a server-side call. Check your configuration and console.');
+             }
+          }
+          
+      });
+        });
+      }
+    </script>
+    <div class="container-fluid" id="loginDesc">
+      {% if error %}
+      <div class="row">
+      <div class="col-12-md">
+        <div class="alert alert-danger">
+          <strong>Error!</strong> {{ error }}
+        </div>
+      </div>
+      </div>
+      {% endif %}
+      <div class="row">
+      <div class="col-12-md">
+        <h1 id="hLogin">Cookbook is currently in beta.</h1>
+      </div>
+      </div>
+      <div class="row">
+      <div class="col-12-md">
+        <p class="lead" id="pLogin">To get started using Cookbook, login using Facebook below.</p>
+      </div>
+      </div>
+      <div class="row">
+      <div class="col-12-md">
+        <div class="btnContainer"><div class="fb-login-button" data-max-rows="1" data-size="large" data-button-type="continue_with" data-show-faces="false" data-auto-logout-link="true" data-use-continue-as="false" scope="public_profile,email" onlogin="sendTokenToServer();"></div></div>
+      </div>
+      </div>
+    </div>
+</body>
+{% endblock %}

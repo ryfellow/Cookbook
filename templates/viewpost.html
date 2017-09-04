@@ -1,0 +1,222 @@
+{% extends "base.html" %}
+{% block content %}
+{% include "header.html" %}
+	
+
+    {% with messages = get_flashed_messages(with_categories=true) %}
+    <div class="container alertMessage">
+  		<div class="row">
+        {% if messages %}
+          {% for category, message in messages %}
+            {% if category == 'danger' %}
+            <div class="alert alert-{{ category }}" role="alert">
+              <strong>Error! </strong> {{ message }}
+            </div>
+            {% elif category == 'success' %}
+            <div class="alert alert-{{ category }}" role="alert">
+              <strong>Success! </strong> {{ message }}
+            </div>
+            {% else %}
+            <div class="alert alert-{{ category }}" role="alert">
+              {{ message }}
+            </div>
+            {% endif %}
+          {% endfor %}
+        {% endif %}
+        </div>
+	</div>
+    {% endwith %}
+ 
+
+    {% for post in posts %}
+ 	<div class="container viewPost">
+ 		<div class="row" id="viewHeader">
+	      	<h3>{{ post.title }}</h3>
+	      	<p class="text-muted">&nbsp; by {{ post.name }}</p>
+		</div>
+		<div class="row">
+	      	<p>{{ post.description }}</p>
+		</div>
+	</div>
+
+	<div class="container viewPost">
+ 		<div class="row" id="ingredientHeader">
+	      	<h5>Ingredients</h5>
+		</div>
+		<div class="row">
+	      	<p>{{ post.ing1Amt }} {{ post.ing1Unit }} {{ post.ing1Title }}</p>
+		</div>
+		<div class="row">
+	      	<p>{{ post.ing2Amt }} {{ post.ing2Unit }} {{ post.ing2Title }}</p>
+		</div>
+
+		{% if post.ing3Title != None %}
+		<div class="row">
+	      	<p>{{ post.ing3Amt }} {{ post.ing3Unit }} {{ post.ing3Title }}</p>
+		</div>
+		{% endif %}
+
+		{% if post.ing4Title != None %}
+		<div class="row">
+	      	<p>{{ post.ing4Amt }} {{ post.ing4Unit }} {{ post.ing4Title }}</p>
+		</div>
+		{% endif %}
+
+		{% if post.ing5Title != None %}
+		<div class="row">
+	      	<p>{{ post.ing5Amt }} {{ post.ing5Unit }} {{ post.ing5Title }}</p>
+		</div>
+		{% endif %}
+
+		{% if post.ing6Title != None %}
+		<div class="row">
+	      	<p>{{ post.ing6Amt }} {{ post.ing6Unit }} {{ post.ing6Title }}</p>
+		</div>
+		{% endif %}
+
+		{% if post.ing7Title != None %}
+		<div class="row">
+	      	<p>{{ post.ing7Amt }} {{ post.ing7Unit }} {{ post.ing7Title }}</p>
+		</div>
+		{% endif %}
+
+		{% if post.ing8Title != None %}
+		<div class="row">
+	      	<p>{{ post.ing8Amt }} {{ post.ing8Unit }} {{ post.ing8Title }}</p>
+		</div>
+		{% endif %}
+
+		{% if post.ing9Title != None %}
+		<div class="row">
+	      	<p>{{ post.ing9Amt }} {{ post.ing9Unit }} {{ post.ing9Title }}</p>
+		</div>
+		{% endif %}
+
+		{% if post.ing10Title != None %}
+		<div class="row">
+	      	<p>{{ post.ing10Amt }} {{ post.ing10Unit }} {{ post.ing10Title }}</p>
+		</div>
+		{% endif %}
+		
+		{% if post.ing11Title != None %}
+		<div class="row">
+	      	<p>{{ post.ing11Amt }} {{ post.ing11Unit }} {{ post.ing11Title }}</p>
+		</div>
+		{% endif %}
+		
+		{% if post.ing12Title != None %}
+		<div class="row">
+	      	<p>{{ post.ing12Amt }} {{ post.ing12Unit }} {{ post.ing12Title }}</p>
+		</div>
+		{% endif %}
+		
+		{% if post.ing13Title != None %}
+		<div class="row">
+	      	<p>{{ post.ing13Amt }} {{ post.ing13Unit }} {{ post.ing13Title }}</p>
+		</div>
+		{% endif %}
+		
+		{% if post.ing14Title != None %}
+		<div class="row">
+	      	<p>{{ post.ing14Amt }} {{ post.ing14Unit }} {{ post.ing14Title }}</p>
+		</div>
+		{% endif %}
+
+		{% if post.ing15Title != None %}
+		<div class="row">
+	      	<p>{{ post.ing15Amt }} {{ post.ing15Unit }} {{ post.ing15Title }}</p>
+		</div>
+		{% endif %}
+	</div>
+
+	<div class="container viewPost">
+ 		<div class="row" id="stepsHeader">
+	      	<h5>Steps</h5>
+		</div>
+		<div class="row">
+	      	<p>1. {{ post.step1 }}</p>
+		</div>
+		<div class="row">
+	      	<p>2. {{ post.step2 }}</p>
+		</div>
+		<div class="row">
+	      	<p>3. {{ post.step3 }}</p>
+		</div>
+
+		{% if post.step4 != None %}
+		<div class="row">
+	      	<p>4. {{ post.step4 }}</p>
+		</div>
+		{% endif %}
+
+		{% if post.step5 != None %}
+		<div class="row">
+	      	<p>5. {{ post.step5 }}</p>
+		</div>
+		{% endif %}
+
+		{% if post.step6 != None %}
+		<div class="row">
+	      	<p>6. {{ post.step6 }}</p>
+		</div>
+		{% endif %}
+
+		{% if post.step7 != None %}
+		<div class="row">
+	      	<p>7. {{ post.step7 }}</p>
+		</div>
+		{% endif %}
+
+		{% if post.step8 != None %}
+		<div class="row">
+	      	<p>8. {{ post.step8 }}</p>
+		</div>
+		{% endif %}
+
+		{% if post.step9 != None %}
+		<div class="row">
+	      	<p>9. {{ post.step9 }}</p>
+		</div>
+		{% endif %}
+
+		{% if post.step10 != None %}
+		<div class="row">
+	      	<p>10. {{ post.step10 }}</p>
+		</div>
+		{% endif %}
+		
+		{% if post.step11 != None %}
+		<div class="row">
+	      	<p>11. {{ post.step11 }}</p>
+		</div>
+		{% endif %}
+		
+		{% if post.step12 != None %}
+		<div class="row">
+	      	<p>12. {{ post.step12 }}</p>
+		</div>
+		{% endif %}
+		
+		{% if post.step13 != None %}
+		<div class="row">
+	      	<p>13. {{ post.step13 }}</p>
+		</div>
+		{% endif %}
+		
+		{% if post.step14 != None %}
+		<div class="row">
+	      	<p>14. {{ post.step14 }}</p>
+		</div>
+		{% endif %}
+
+		{% if post.step15 != None %}
+		<div class="row">
+	      	<p>15. {{ post.step15 }}</p>
+		</div>
+		{% endif %}
+	</div>
+		{% if session['user_id'] == post.user_id %}
+	    	<div class="btnContainer"><a href="{{url_for('editpost', post_id = post_id)}}" class="btn btn-primary editRecipe">Edit Recipe</a></div>
+	    {% endif %}
+    {% endfor %}
+{% endblock %}

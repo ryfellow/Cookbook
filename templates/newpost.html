@@ -1,0 +1,104 @@
+{% extends "base.html" %}
+{% block content %}
+{% include "header.html" %}
+<script src="{{ url_for('static', filename = 'js/post.js') }}"></script>
+
+    <form action="#" method="post" id="frmNewPost">
+      <div class="container">
+        <h3>The Basics:</h3>
+        <div class="form-row">
+          <div class="form-group col-md-8">
+            <label for="title" class="col-form-label">Title:</label>
+            <input type="text" class="form-control title" name="title" placeholder="Title">
+          </div>
+            <div class="form-group col-md-4">
+              <label for="selectDifficulty" class="col-form-label">Difficulty:</label>
+              <select class="form-control" name="difficulty" id="difficulty">
+                  <option selected></option>
+                  <option value="Easy">Easy</option>
+                  <option value="Medium">Medium</option>
+                  <option value="Hard">Hard</option>
+              </select>
+            </div>
+          </div>
+          <div class="form-row">
+            <div class="form-group col-md-8">
+              <label for="description" class="col-form-label">Description:</label>
+              <input type="text" class="form-control description" name="description" placeholder="Tell the world what you want it to know about this recipe!">
+            </div>
+            <div class="form-group col-md-4">
+              <label for="selectCategory" class="col-form-label">Style:</label>
+              <select class="form-control" name="category" id="category">
+                  <option selected></option>
+                  <option value="Italian">Italian</option>
+                  <option value="Chinese">Chinese</option>
+                  <option value="English">English</option>
+                  <option value="French">English</option>
+                  <option value="Japanese">Japanese</option>
+                  <option value="Iranian">Iranian</option>
+                  <option value="German">German</option>
+                  <option value="Asian Fusion">Asian Fusion</option>
+                  <option value="Southern">Southern</option>
+              </select>
+            </div>
+          </div>
+        <h3>Ingredients:</h3>
+        <div class="form-row ingredient">
+          <div class="form-group col-md-8">
+            <input type="text" class="form-control inputIngredient" name="ing1Title" placeholder="Ingredient">
+          </div>
+          <div class="form-group col-md-2">
+            <input type="number" class="form-control inputAmount" name="ing1Amt" placeholder="Amount">
+          </div>
+          <div class="form-group col-md-2">
+            <select class="form-control" name="ing1Unit">
+                <option selected>Unit</option>
+                <option value="grams">grams</option>
+                <option value="cups">cups</option>
+                <option value="ounces">ounces</option>
+                <option value="pounds">pounds</option>
+                <option value="milliliters">milliliters</option>
+                <option value="tablespoon">tablespoon</option>
+                <option value="teaspoon">teaspoon</option>
+                <option value=" ">whole ingredient</option>
+            </select>
+          </div>
+          <div class="form-group col-md-8">
+            <input type="text" class="form-control inputIngredient" name="ing2Title" placeholder="Ingredient">
+          </div>
+          <div class="form-group col-md-2">
+            <input type="number" class="form-control inputAmount" name="ing2Amt" placeholder="Amount">
+          </div>
+          <div class="form-group col-md-2">
+            <select class="form-control" name="ing2Unit">
+                <option selected>Unit</option>
+                <option value="grams">grams</option>
+                <option value="cups">cups</option>
+                <option value="ounces">ounces</option>
+                <option value="pounds">pounds</option>
+                <option value="milliliters">milliliters</option>
+                <option value="tablespoon">tablespoon</option>
+                <option value="teaspoon">teaspoon</option>
+                <option value=" ">whole ingredient</option>
+            </select>
+          </div>
+        </div>
+        <div class="btnContainer"><button type="button" class="btn btn-primary newIngredient">Add Ingredient</button></div>
+        <h3>Steps:</h3>
+          <div class="form-group step">
+            <div class="form-group">
+              <input type="text" class="form-control inputStep" name="step1" placeholder="Enter the first step of this recipe!">
+            </div>
+            <div class="form-group">
+              <input type="text" class="form-control inputStep" name="step2" placeholder="Enter the next step necessary for the recipe!">
+            </div>
+            <div class="form-group">
+              <input type="text" class="form-control inputStep" name="step3" placeholder="Enter the next step necessary for the recipe!">
+            </div>
+          </div>
+        <div class="btnContainer"><button type="button" class="btn btn-primary newStep">Add Step</button></div>
+      </div>
+      <div class="btnContainer"><button type="submit" class="btn btn-default enter" id="submit" type="submit">Submit Recipe</button></div>
+    </form>
+
+{% endblock %}

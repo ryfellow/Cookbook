@@ -1,0 +1,497 @@
+{% extends "base.html" %}
+{% block content %}
+{% include "header.html" %}
+<script src="{{ url_for('static', filename = 'js/editPost.js') }}"></script>
+	<form action="{{url_for('editpost', post_id = post.id)}}" method="post" id="frmNewPost">
+      	<div class="container">
+	        <h3>The Basics:</h3>
+	        <div class="form-row">
+	          <div class="form-group col-md-8">
+	            <label for="title" class="col-form-label">Title:</label>
+	            <input type="text" class="form-control title" name="title" value="{{post.title}}">
+	          </div>
+	            <div class="form-group col-md-4">
+	              <label for="selectDifficulty" class="col-form-label">Difficulty:</label>
+	              <select class="form-control" name="difficulty" id="difficulty">
+	                  <option selected>{{ post.difficulty }}</option>
+	                  <option value="Easy">Easy</option>
+	                  <option value="Medium">Medium</option>
+	                  <option value="Hard">Hard</option>
+	              </select>
+	            </div>
+	          </div>
+	          <div class="form-row">
+	            <div class="form-group col-md-8">
+	              <label for="description" class="col-form-label">Description:</label>
+	              <input type="text" class="form-control description" name="description" value="{{ post.description }}">
+	            </div>
+	            <div class="form-group col-md-4">
+	              <label for="selectCategory" class="col-form-label">Style:</label>
+	              <select class="form-control" name="category" id="category">
+	                  <option selected>{{ post.category }}</option>
+	                  <option value="Italian">Italian</option>
+	                  <option value="Chinese">Chinese</option>
+	                  <option value="English">English</option>
+	                  <option value="French">English</option>
+	                  <option value="Japanese">Japanese</option>
+	                  <option value="Iranian">Iranian</option>
+	                  <option value="German">German</option>
+	                  <option value="Asian Fusion">Asian Fusion</option>
+	                  <option value="Southern">Southern</option>
+	              </select>
+	            </div>
+	          </div>
+	        <h3>Ingredients:</h3>
+	       	<div class="form-row ingredient">
+	          <div class="form-group col-md-8">
+	            <input type="text" class="form-control inputIngredient" name="ing1Title" value="{{ post.ing1Title }}">
+	          </div>
+	          <div class="form-group col-md-2">
+	            <input type="number" class="form-control inputAmount" name="ing1Amt" value="{{ post.ing1Amt }}">
+	          </div>
+	          <div class="form-group col-md-2">
+	            <select class="form-control" name="ing1Unit">
+	                <option selected>{{ post.ing1Unit }}</option>
+	                <option value="grams">grams</option>
+	                <option value="cups">cups</option>
+	                <option value="ounces">ounces</option>
+	                <option value="pounds">pounds</option>
+	                <option value="milliliters">milliliters</option>
+	                <option value="tablespoon">tablespoon</option>
+	                <option value="teaspoon">teaspoon</option>
+	                <option value=" ">whole ingredient</option>
+	            </select>
+	          </div>
+	          <div class="form-group col-md-8">
+	            <input type="text" class="form-control inputIngredient" name="ing2Title" value="{{ post.ing2Title }}">
+	          </div>
+	          <div class="form-group col-md-2">
+	            <input type="number" class="form-control inputAmount" name="ing2Amt" value="{{ post.ing2Amt }}">
+	          </div>
+	          <div class="form-group col-md-2">
+	            <select class="form-control" name="ing2Unit">
+	                <option selected>{{ post.ing2Unit }}</option>
+	                <option value="grams">grams</option>
+	                <option value="cups">cups</option>
+	                <option value="ounces">ounces</option>
+	                <option value="pounds">pounds</option>
+	                <option value="milliliters">milliliters</option>
+	                <option value="tablespoon">tablespoon</option>
+	                <option value="teaspoon">teaspoon</option>
+	                <option value=" ">whole ingredient</option>
+	            </select>
+	          </div>
+
+	        {% set count = 2 %}
+	        {% if post.ing3Title != None %}
+	          {% set count = count + 1 %}
+	          <div class="form-group col-md-8">
+	            <input type="text" class="form-control inputIngredient" name="ing3Title" value="{{ post.ing3Title }}">
+	          </div>
+	          <div class="form-group col-md-2">
+	            <input type="number" class="form-control inputAmount" name="ing3Amt" value="{{ post.ing3Amt }}">
+	          </div>
+	          <div class="form-group col-md-2">
+	            <select class="form-control" name="ing3Unit">
+	                <option selected>{{ post.ing3Unit }}</option>
+	                <option value="grams">grams</option>
+	                <option value="cups">cups</option>
+	                <option value="ounces">ounces</option>
+	                <option value="pounds">pounds</option>
+	                <option value="milliliters">milliliters</option>
+	                <option value="tablespoon">tablespoon</option>
+	                <option value="teaspoon">teaspoon</option>
+	                <option value=" ">whole ingredient</option>
+	            </select>
+	          </div>
+			{% endif %}
+
+			{% if post.ing4Title != None %}
+	          {% set count = count + 1 %}
+			  <div class="form-group col-md-8">
+	            <input type="text" class="form-control inputIngredient" name="ing4Title" value="{{ post.ing4Title }}">
+	          </div>
+	          <div class="form-group col-md-2">
+	            <input type="number" class="form-control inputAmount" name="ing4Amt" value="{{ post.ing4Amt }}">
+	          </div>
+	          <div class="form-group col-md-2">
+	            <select class="form-control" name="ing4Unit">
+	                <option selected>{{ post.ing4Unit }}</option>
+	                <option value="grams">grams</option>
+	                <option value="cups">cups</option>
+	                <option value="ounces">ounces</option>
+	                <option value="pounds">pounds</option>
+	                <option value="milliliters">milliliters</option>
+	                <option value="tablespoon">tablespoon</option>
+	                <option value="teaspoon">teaspoon</option>
+	                <option value=" ">whole ingredient</option>
+	            </select>
+	          </div>
+			{% endif %}
+
+			{% if post.ing5Title != None %}
+	          {% set count = count + 1 %}
+			  <div class="form-group col-md-8">
+	            <input type="text" class="form-control inputIngredient" name="ing5Title" value="{{ post.ing5Title }}">
+	          </div>
+	          <div class="form-group col-md-2">
+	            <input type="number" class="form-control inputAmount" name="ing5Amt" value="{{ post.ing5Amt }}">
+	          </div>
+	          <div class="form-group col-md-2">
+	            <select class="form-control" name="ing5Unit">
+	                <option selected>{{ post.ing5Unit }}</option>
+	                <option value="grams">grams</option>
+	                <option value="cups">cups</option>
+	                <option value="ounces">ounces</option>
+	                <option value="pounds">pounds</option>
+	                <option value="milliliters">milliliters</option>
+	                <option value="tablespoon">tablespoon</option>
+	                <option value="teaspoon">teaspoon</option>
+	                <option value=" ">whole ingredient</option>
+	            </select>
+	          </div>
+			{% endif %}
+
+			{% if post.ing6Title != None %}
+	          {% set count = count + 1 %}
+			  <div class="form-group col-md-8">
+	            <input type="text" class="form-control inputIngredient" name="ing6Title" value="{{ post.ing6Title }}">
+	          </div>
+	          <div class="form-group col-md-2">
+	            <input type="number" class="form-control inputAmount" name="ing6Amt" value="{{ post.ing6Amt }}">
+	          </div>
+	          <div class="form-group col-md-2">
+	            <select class="form-control" name="ing6Unit">
+	                <option selected>{{ post.ing6Unit }}</option>
+	                <option value="grams">grams</option>
+	                <option value="cups">cups</option>
+	                <option value="ounces">ounces</option>
+	                <option value="pounds">pounds</option>
+	                <option value="milliliters">milliliters</option>
+	                <option value="tablespoon">tablespoon</option>
+	                <option value="teaspoon">teaspoon</option>
+	                <option value=" ">whole ingredient</option>
+	            </select>
+	          </div>
+			{% endif %}
+
+			{% if post.ing7Title != None %}
+	          {% set count = count + 1 %}
+			  <div class="form-group col-md-8">
+	            <input type="text" class="form-control inputIngredient" name="ing7Title" value="{{ post.ing7Title }}">
+	          </div>
+	          <div class="form-group col-md-2">
+	            <input type="number" class="form-control inputAmount" name="ing7Amt" value="{{ post.ing7Amt }}">
+	          </div>
+	          <div class="form-group col-md-2">
+	            <select class="form-control" name="ing7Unit">
+	                <option selected>{{ post.ing7Unit }}</option>
+	                <option value="grams">grams</option>
+	                <option value="cups">cups</option>
+	                <option value="ounces">ounces</option>
+	                <option value="pounds">pounds</option>
+	                <option value="milliliters">milliliters</option>
+	                <option value="tablespoon">tablespoon</option>
+	                <option value="teaspoon">teaspoon</option>
+	                <option value=" ">whole ingredient</option>
+	            </select>
+	          </div>
+			{% endif %}
+
+			{% if post.ing8Title != None %}
+	          {% set count = count + 1 %}
+			  <div class="form-group col-md-8">
+	            <input type="text" class="form-control inputIngredient" name="ing8Title" value="{{ post.ing8Title }}">
+	          </div>
+	          <div class="form-group col-md-2">
+	            <input type="number" class="form-control inputAmount" name="ing8Amt" value="{{ post.ing8Amt }}">
+	          </div>
+	          <div class="form-group col-md-2">
+	            <select class="form-control" name="ing8Unit">
+	                <option selected>{{ post.ing8Unit }}</option>
+	                <option value="grams">grams</option>
+	                <option value="cups">cups</option>
+	                <option value="ounces">ounces</option>
+	                <option value="pounds">pounds</option>
+	                <option value="milliliters">milliliters</option>
+	                <option value="tablespoon">tablespoon</option>
+	                <option value="teaspoon">teaspoon</option>
+	                <option value=" ">whole ingredient</option>
+	            </select>
+	          </div>
+			{% endif %}
+
+			{% if post.ing9Title != None %}
+	          {% set count = count + 1 %}
+			  <div class="form-group col-md-8">
+	            <input type="text" class="form-control inputIngredient" name="ing9Title" value="{{ post.ing9Title }}">
+	          </div>
+	          <div class="form-group col-md-2">
+	            <input type="number" class="form-control inputAmount" name="ing9Amt" value="{{ post.ing9Amt }}">
+	          </div>
+	          <div class="form-group col-md-2">
+	            <select class="form-control" name="ing9Unit">
+	                <option selected>{{ post.ing9Unit }}</option>
+	                <option value="grams">grams</option>
+	                <option value="cups">cups</option>
+	                <option value="ounces">ounces</option>
+	                <option value="pounds">pounds</option>
+	                <option value="milliliters">milliliters</option>
+	                <option value="tablespoon">tablespoon</option>
+	                <option value="teaspoon">teaspoon</option>
+	                <option value=" ">whole ingredient</option>
+	            </select>
+	          </div>
+			{% endif %}
+
+			{% if post.ing10Title != None %}
+	          {% set count = count + 1 %}
+			  <div class="form-group col-md-8">
+	            <input type="text" class="form-control inputIngredient" name="ing10Title" value="{{ post.ing10Title }}">
+	          </div>
+	          <div class="form-group col-md-2">
+	            <input type="number" class="form-control inputAmount" name="ing10Amt" value="{{ post.ing10Amt }}">
+	          </div>
+	          <div class="form-group col-md-2">
+	            <select class="form-control" name="ing10Unit">
+	                <option selected>{{ post.ing10Unit }}</option>
+	                <option value="grams">grams</option>
+	                <option value="cups">cups</option>
+	                <option value="ounces">ounces</option>
+	                <option value="pounds">pounds</option>
+	                <option value="milliliters">milliliters</option>
+	                <option value="tablespoon">tablespoon</option>
+	                <option value="teaspoon">teaspoon</option>
+	                <option value=" ">whole ingredient</option>
+	            </select>
+	          </div>
+			{% endif %}
+			
+			{% if post.ing11Title != None %}
+	          {% set count = count + 1 %}
+			  <div class="form-group col-md-8">
+	            <input type="text" class="form-control inputIngredient" name="ing11Title" value="{{ post.ing11Title }}">
+	          </div>
+	          <div class="form-group col-md-2">
+	            <input type="number" class="form-control inputAmount" name="ing11Amt" value="{{ post.ing11Amt }}">
+	          </div>
+	          <div class="form-group col-md-2">
+	            <select class="form-control" name="ing11Unit">
+	                <option selected>{{ post.ing11Unit }}</option>
+	                <option value="grams">grams</option>
+	                <option value="cups">cups</option>
+	                <option value="ounces">ounces</option>
+	                <option value="pounds">pounds</option>
+	                <option value="milliliters">milliliters</option>
+	                <option value="tablespoon">tablespoon</option>
+	                <option value="teaspoon">teaspoon</option>
+	                <option value=" ">whole ingredient</option>
+	            </select>
+	          </div>
+			{% endif %}
+			
+			{% if post.ing12Title != None %}
+	          {% set count = count + 1 %}
+			  <div class="form-group col-md-8">
+	            <input type="text" class="form-control inputIngredient" name="ing12Title" value="{{ post.ing12Title }}">
+	          </div>
+	          <div class="form-group col-md-2">
+	            <input type="number" class="form-control inputAmount" name="ing12Amt" value="{{ post.ing12Amt }}">
+	          </div>
+	          <div class="form-group col-md-2">
+	            <select class="form-control" name="ing12Unit">
+	                <option selected>{{ post.ing12Unit }}</option>
+	                <option value="grams">grams</option>
+	                <option value="cups">cups</option>
+	                <option value="ounces">ounces</option>
+	                <option value="pounds">pounds</option>
+	                <option value="milliliters">milliliters</option>
+	                <option value="tablespoon">tablespoon</option>
+	                <option value="teaspoon">teaspoon</option>
+	                <option value=" ">whole ingredient</option>
+	            </select>
+	          </div>
+			{% endif %}
+			
+			{% if post.ing13Title != None %}
+	          {% set count = count + 1 %}
+			  <div class="form-group col-md-8">
+	            <input type="text" class="form-control inputIngredient" name="ing13Title" value="{{ post.ing13Title }}">
+	          </div>
+	          <div class="form-group col-md-2">
+	            <input type="number" class="form-control inputAmount" name="ing13Amt" value="{{ post.ing13Amt }}">
+	          </div>
+	          <div class="form-group col-md-2">
+	            <select class="form-control" name="ing13Unit">
+	                <option selected>{{ post.ing13Unit }}</option>
+	                <option value="grams">grams</option>
+	                <option value="cups">cups</option>
+	                <option value="ounces">ounces</option>
+	                <option value="pounds">pounds</option>
+	                <option value="milliliters">milliliters</option>
+	                <option value="tablespoon">tablespoon</option>
+	                <option value="teaspoon">teaspoon</option>
+	                <option value=" ">whole ingredient</option>
+	            </select>
+	          </div>
+			{% endif %}
+			
+			{% if post.ing14Title != None %}
+	          {% set count = count + 1 %}
+			  <div class="form-group col-md-8">
+	            <input type="text" class="form-control inputIngredient" name="ing14Title" value="{{ post.ing14Title }}">
+	          </div>
+	          <div class="form-group col-md-2">
+	            <input type="number" class="form-control inputAmount" name="ing14Amt" value="{{ post.ing14Amt }}">
+	          </div>
+	          <div class="form-group col-md-2">
+	            <select class="form-control" name="ing14Unit">
+	                <option selected>{{ post.ing14Unit }}</option>
+	                <option value="grams">grams</option>
+	                <option value="cups">cups</option>
+	                <option value="ounces">ounces</option>
+	                <option value="pounds">pounds</option>
+	                <option value="milliliters">milliliters</option>
+	                <option value="tablespoon">tablespoon</option>
+	                <option value="teaspoon">teaspoon</option>
+	                <option value=" ">whole ingredient</option>
+	            </select>
+	          </div>
+			{% endif %}
+
+			{% if post.ing15Title != None %}
+	          {% set count = count + 1 %}
+			  <div class="form-group col-md-8">
+	            <input type="text" class="form-control inputIngredient" name="ing15Title" value="{{ post.ing15Title }}">
+	          </div>
+	          <div class="form-group col-md-2">
+	            <input type="number" class="form-control inputAmount" name="ing15Amt" value="{{ post.ing15Amt }}">
+	          </div>
+	          <div class="form-group col-md-2">
+	            <select class="form-control" name="ing15Unit">
+	                <option selected>{{ post.ing15Unit }}</option>
+	                <option value="grams">grams</option>
+	                <option value="cups">cups</option>
+	                <option value="ounces">ounces</option>
+	                <option value="pounds">pounds</option>
+	                <option value="milliliters">milliliters</option>
+	                <option value="tablespoon">tablespoon</option>
+	                <option value="teaspoon">teaspoon</option>
+	                <option value=" ">whole ingredient</option>
+	            </select>
+	          </div>
+			{% endif %}
+			<input type="hidden" id="newIngCount" name="newIngCount" value="{{ count }}">
+		</div>
+		<div class="btnContainer"><button type="button" class="btn btn-primary newIngredient">Add Ingredient</button></div>
+        
+        <h3>Steps:</h3>
+        <div class="form-group step">
+            <div class="form-group">
+              	<input type="text" class="form-control inputStep" name="step1" value="{{ post.step1 }}">
+            </div>
+            <input type="hidden" id="newStepCount" name="newStepCount" value="1">
+            <div class="form-group">
+              	<input type="text" class="form-control inputStep" name="step2" value="{{ post.step2 }}">
+            </div>
+            <input type="hidden" id="newStepCount" name="newStepCount" value="2">
+            <div class="form-group">
+              	<input type="text" class="form-control inputStep" name="step3" value="{{ post.step3 }}">
+            </div>
+            <input type="hidden" id="newStepCount" name="newStepCount" value="3">
+
+            {% set stepCount = 3 %}
+			{% if post.step4 != None %}
+				{% set stepCount = stepCount + 1 %}
+	            <div class="form-group">
+	              	<input type="text" class="form-control inputStep" name="step4" value="{{ post.step4 }}">
+	            </div>
+			{% endif %}
+
+			{% if post.step5 != None %}
+				{% set stepCount = stepCount + 1 %}
+	            <div class="form-group">
+	              	<input type="text" class="form-control inputStep" name="step5" value="{{ post.step5 }}">
+	            </div>
+			{% endif %}
+
+			{% if post.step6 != None %}
+				{% set stepCount = stepCount + 1 %}
+	            <div class="form-group">
+	              	<input type="text" class="form-control inputStep" name="step6" value="{{ post.step6 }}">
+	            </div>
+			{% endif %}
+
+			{% if post.step7 != None %}
+				{% set stepCount = stepCount + 1 %}
+	            <div class="form-group">
+	              	<input type="text" class="form-control inputStep" name="step7" value="{{ post.step7 }}">
+	            </div>
+			{% endif %}
+
+			{% if post.step8 != None %}
+				{% set stepCount = stepCount + 1 %}
+	            <div class="form-group">
+	              	<input type="text" class="form-control inputStep" name="step8" value="{{ post.step8 }}">
+	            </div>
+			{% endif %}
+
+			{% if post.step9 != None %}
+				{% set stepCount = stepCount + 1 %}
+	            <div class="form-group">
+	              	<input type="text" class="form-control inputStep" name="step9" value="{{ post.step9 }}">
+	            </div>
+			{% endif %}
+
+			{% if post.step10 != None %}
+				{% set stepCount = stepCount + 1 %}
+	            <div class="form-group">
+	              	<input type="text" class="form-control inputStep" name="step10" value="{{ post.step10 }}">
+	            </div>
+			{% endif %}
+			
+			{% if post.step11 != None %}
+				{% set stepCount = stepCount + 1 %}
+	            <div class="form-group">
+	              	<input type="text" class="form-control inputStep" name="step11" value="{{ post.step11 }}">
+	            </div>
+			{% endif %}
+			
+			{% if post.step12 != None %}
+				{% set stepCount = stepCount + 1 %}
+	            <div class="form-group">
+	              	<input type="text" class="form-control inputStep" name="step12" value="{{ post.step12 }}">
+	            </div>
+			{% endif %}
+			
+			{% if post.step13 != None %}
+				{% set stepCount = stepCount + 1 %}
+	            <div class="form-group">
+	              	<input type="text" class="form-control inputStep" name="step13" value="{{ post.step13 }}">
+	            </div>
+			{% endif %}
+			
+			{% if post.step14 != None %}
+				{% set stepCount = stepCount + 1 %}
+	            <div class="form-group">
+	              	<input type="text" class="form-control inputStep" name="step14" value="{{ post.step14 }}">
+	            </div>
+			{% endif %}
+
+			{% if post.step15 != None %}
+				{% set stepCount = stepCount + 1 %}
+	            <div class="form-group">
+	              	<input type="text" class="form-control inputStep" name="step15" value="{{ post.step15 }}">
+	            </div>
+			{% endif %}
+			<input type="hidden" id="newStepCount" name="newStepCount" value="{{ stepCount }}">
+		</div>
+		<div class="btnContainer"><button type="button" class="btn btn-primary newStep">Add Step</button></div>
+		</div>
+	<div class="btnContainer">
+		<a href="{{url_for('deletepost', post_id = post.id)}}" class="btn btn-primary deleteRecipe">Delete Recipe</a>
+		<button type="submit" class="btn btn-default enter" id="submit" type="submit">Update</button>
+	</div>
+</form>
+
+{% endblock %}

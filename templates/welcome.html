@@ -1,0 +1,21 @@
+{% extends "base.html" %}
+{% block content %}
+{% include "header.html" %}
+
+  <div class="jumbotron jumbotron-fluid" style="background-image:url({{ url_for('static', filename='img/cbTile.png') }})">
+    <div class="container-fluid">
+      <h3 class="displayJumbo">Everything you need to know about <br> recipes, all in one place.</h1>
+      <p class="lead">Cookbook is here to help you tackle recipes <br> that fit your culinary skillset.</p>
+    </div>
+  </div>
+
+  <div class="container-fluid">
+  	<div class="row">
+      <h5 class="lead">Easy to use interface.</h5>
+    </div>
+    <div class="row">
+      <h5 class="lead">Get the details for a recipe before you get invested.</h5>
+    </div>
+  </div>
+
+{% endblock %}

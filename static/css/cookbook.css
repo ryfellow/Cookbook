@@ -1,0 +1,257 @@
+body {
+	padding-top: 70px;
+	font-family: 'Lato', sans-serif;
+}
+
+.card {
+    width: 35rem;
+    margin: 1rem auto;
+    float: none;
+    border: 1px solid #8C8A8E;
+}
+
+.card-header {
+	background-color: white;
+	font-family: 'Droid Serif', serif;
+	border-bottom: none;
+	color: #414042;
+}
+
+.card-footer {
+	background-color: white;
+	font-family: 'Droid Serif', serif;
+	color: #414042;
+	border-top: 1px solid #8C8A8E;
+}
+
+.cardDesc {
+	padding: 1.25rem;
+
+}
+
+.btnContainer {
+	text-align: center;
+	margin: .75rem auto .75rem;
+}
+
+.viewPost {
+	width: 45rem;
+}
+
+#stepsHeader, #ingredientHeader {
+    border-bottom: 1px solid #414042;
+    font-family: 'Droid Serif', serif;
+}
+
+.sidenav {
+	position: fixed;
+	top: 51px;
+	bottom: 0;
+	left: 0;
+	z-index: 1000;
+	padding: 20px;
+	overflow-x: hidden;
+	overflow-y: auto;
+	border-right: 1px solid #8C8A8E;
+	background-color: #F3F4F5;
+}
+
+.navmain {
+	background-color: white;
+	border-bottom: 1px solid #8C8A8E;
+}
+
+#sideBarExplore {
+	padding-top: 1rem;
+	color: #414042;
+	font-family: 'Lato', sans-serif;
+}
+
+a {
+	font-family: 'Lato', sans-serif;
+	color: #8C8A8E;
+	text-decoration: none;
+}
+
+a:hover {
+	color: #414042;
+	text-decoration: none;
+}
+
+.viewRecipe {
+	margin-right: .5rem;
+}
+
+.editRecipe {
+	margin-left: .5rem;
+}
+
+#btnLogin {
+	background-color: white;
+	color: #40AC75;
+	border: 1px solid #40AC75;
+}
+
+#btnLogin:hover {
+	background-color: #40AC75;
+	border: 0;
+	border-bottom: 4px solid #239358;
+	outline: none !important;
+	color: white;
+}
+
+#btnLogin:focus {
+	background-color: #239358;
+	color: white;
+	outline: none !important;
+}
+
+#homeHeader {
+	width: 35rem;
+	margin: 0 auto;
+	float: none;
+	color: #414042;
+}
+
+.btn {
+	font-family: 'Lato', sans-serif;
+}
+
+h1, h2, h3, h4, h5 {
+	font-family: 'Droid Serif', serif;
+	color: #414042;
+}
+
+p {
+	color: #414042;
+}
+
+.list-group-item {
+	border-top: none;
+	border-bottom: none;
+	padding: .5rem 0 0 1.25rem;
+
+}
+
+.list-group-item.end {
+	border-bottom: 1px solid #8C8A8E;
+	padding-bottom: 1rem;
+}
+
+.list-group-item.start {
+	border-top: 1px solid #8C8A8E;
+	padding-top: 1rem;
+}
+
+.cardDesc {
+	padding-top: 0;
+}
+
+.sideLinks {
+	padding: .25rem;
+}
+
+.viewRecipe, .editRecipe, .enter {
+	color: white;
+	background-color: #40AC75;
+	border: none;
+}
+
+.viewRecipe:hover, .editRecipe:hover, .enter:hover {
+	color: white;
+	background-color: #239358;
+	border: none;
+}
+
+.newRecipe {
+	background-color: #BF515C;
+	border: none;
+}
+
+#frmNewPost {
+	padding-top: 1rem;
+}
+
+.col-form-label {
+	padding-top: 0;
+}
+
+.viewPost {
+	padding-top: 1rem;
+}
+
+#viewHeader p {
+	margin-top: .345rem;
+    margin-bottom: 1rem;
+}
+
+#loginDesc {
+	width: 40rem;
+    margin: 10rem auto;
+    margin-bottom: 1.5rem;
+    float: none;
+    background-color: white;
+    border: 1px solid #8C8A8E;
+    border-radius: 5px;
+    padding: 1rem;
+}
+
+#loginDesc .row .col-12-md {
+	margin: 0 auto;
+	text-align: center;
+}
+
+#hLogin, #pLogin {
+	width: 100%;
+    text-align: center;
+}
+
+#pLogin {
+	margin-bottom: 0;
+}
+
+#hLogin {
+	margin-top: 1rem;
+}
+
+.jumbotron-fluid {
+    margin-top: -1rem;
+    background-color: white;
+}
+
+.displayJumbo, .lead {
+    color: #414042;
+}
+
+.deleteRecipe {
+	color: white;
+	background-color: #EC484E;
+	border: none;
+}
+
+.deleteRecipe:hover {
+	color: white;
+	background-color: #A83337;
+	border: none;
+}
+
+.newIngredient, .newStep {
+	background-color: #F3F4F5;
+	color: #8E8E8E;
+	border: none;
+}
+
+.newIngredient:hover, .newStep:hover {
+	background-color: #8E8E8E;
+	color: #414042;
+	border: none;
+}
+
+.alert {
+	margin: 1rem auto;
+}
+
+#loginDesc .lead {
+	margin-top: 1rem;
+	margin-bottom: 1rem;
+}

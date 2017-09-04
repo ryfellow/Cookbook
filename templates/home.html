@@ -1,0 +1,80 @@
+{% extends "base.html" %}
+{% block content %}
+{% include "header.html" %}
+
+<div class="container-fluid">
+	<div class="row">
+	    <nav class="col-sm-4 col-md-3 col-xl-2 d-none d-sm-block sidenav">
+	      <h5 id="sideBarExplore">Your Cookbook</h5>
+	      <ul class="nav flex-column navCategory">
+	        <li><a class="sideLinks" href="{{url_for('newpost')}}">New Recipe</a></li>
+	        <li><a class="sideLinks" href="{{url_for('newpost')}}">Profile</a></li>
+	      </ul>
+	      <h5 id="sideBarExplore">Explore Recipes</h5>
+	      <ul class="nav flex-column navCategory">
+	        <li><a class="sideLinks" href="{{url_for('home')}}">#All</a></li>
+	        {% for category in categories %}
+	        <li><a class="sideLinks" href="{{url_for('home', category_name = category.category)}}">#{{ category.category }}</a></li>
+	        {% endfor %}
+	      </ul>
+	    </nav>
+
+		<main class="col-sm-8 col-md-9 col-xl-10 ml-sm-auto pt-3" role="main">
+			<h3 id="homeHeader">{{ pageTitle }} Recipes</h3>
+		    {% with messages = get_flashed_messages(with_categories=true) %}
+		    <div class="container alertMessage">
+		      <div class="row">
+		        {% if messages %}
+		          {% for category, message in messages %}
+		            {% if category == 'danger' %}
+		            <div class="alert alert-{{ category }}" role="alert">
+		              <strong>Error! </strong> {{ message }}
+		            </div>
+		            {% elif category == 'success' %}
+		            <div class="alert alert-{{ category }}" role="alert">
+		              <strong>Success! </strong> {{ message }}
+		            </div>
+		            {% else %}
+		            <div class="alert alert-{{ category }}" role="alert">
+		              {{ message }}
+		            </div>
+		            {% endif %}
+		          {% endfor %}
+		        {% endif %}
+		        </div>
+		    </div>
+		    {% endwith %}
+		    {% for post in shortPosts %}
+			<div class="container-fluid">
+				<div class="row">
+			      	<div class="card">
+					  <h5 class="card-header">{{ post.title }}</h5>
+					  	<div class="card-block">
+					  		<p class="card-text cardDesc">{{ post.description }}</p>
+					  	</div>
+					  	<ul class="list-group list-group-flush">
+						    <li class="list-group-item start">Difficulty: {{ post.difficulty }}</li>
+						    <li class="list-group-item">Style: {{ post.category }}</li>
+						    <li class="list-group-item">Ingredients: {{ post.ingCount }}</li>
+						    <li class="list-group-item end">Steps: {{ post.stepCount }}</li>
+						</ul>
+						<div class="card-block">
+						    <div class="btnContainer">
+							    <a href="{{url_for('viewpost', post_id = post.id)}}" class="btn btn-primary viewRecipe">View Recipe</a>
+							    {% if session['user_id'] == post.user_id %}
+							    	<a href="{{url_for('editpost', post_id = post.id)}}" class="btn btn-primary editRecipe">Edit Recipe</a>
+							    {% endif %}
+						    </div>
+						</div>
+					  	<div class="card-footer">
+			  				<small>By {{ post.name }}</small>
+						</div>
+					</div>
+				</div>
+			</div>
+			{% endfor %}
+		</main>
+    </div>
+</div>
+
+{% endblock %}
